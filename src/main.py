@@ -4,7 +4,7 @@
 
 ## Imports
 import sys
-import directory
+from lib import directory
 
 ## Initiating
 
