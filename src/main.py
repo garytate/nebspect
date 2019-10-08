@@ -4,15 +4,14 @@
 
 ## Imports
 import sys
+import os
 from lib import directory
 
 ## Initiating
 
-# Error Check ex01 - file not ran from main folder.
-if (not directory.verifyDirectory()):
-    print("FATAL ERROR ex01: Please run main.py directly from the folder.\nProgram shutting down.")
-    sys.exit(0)
+main_folder = os.path.dirname(os.path.abspath(__file__))
+log_folder = directory.getChildDirectory(main_folder, "\logs")
+char_folder = directory.getChildDirectory(main_folder, "\characters")
 
-log_folder = directory.getLogFolder(directory.getDirectoryParent())
-print(log_folder)
+print(main_folder, log_folder, char_folder)
 input()

@@ -14,5 +14,5 @@ def verifyDirectory():
     return os.path.exists("main.py")
 
 # @return string
-def getLogFolder(dir_parent):
-    return str(dir_parent) + "\logs"
+def getChildDirectory(dir_parent, dir_child):
+    return str(dir_parent) + dir_child
