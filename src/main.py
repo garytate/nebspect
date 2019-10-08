@@ -8,6 +8,8 @@ import os
 from lib import directory
 
 ## Initiating
+os.system('cls')
+print("Nebspect: Version 0.0.1 - Last updated 08/10/2019\n")
 
 main_folder = os.path.dirname(os.path.abspath(__file__))
 log_folder = directory.getChildDirectory(main_folder, "\logs")
