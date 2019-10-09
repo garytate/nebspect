@@ -1,4 +1,0 @@
-Gary says "Hello"
-Jacob says "Goodbye"
-Michael used command: "/me waves."
-Gary says "Goodbye too"

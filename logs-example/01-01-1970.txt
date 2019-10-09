@@ -1,0 +1,3 @@
+[00:27:03] [LOOC] James: wall it?
+[00:27:04] Kyle entered observer.
+[00:27:06] Kyle exited observer at their location.
