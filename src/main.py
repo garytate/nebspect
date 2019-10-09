@@ -28,13 +28,13 @@ for char in characters:
     charResults = 0
     charDaysActive = 0
     charIsActive = False
-    char = re.sub(r'[^a-zA-Z]', "", char)
+    charreg = re.sub(r'[^a-zA-Z]', "", char)
     for logfile in logArray:
         logs = logging.getLogByDate(logfile, log_folder)
         with open(logs, encoding="UTF-8") as l:
             for lines in l:
                 lines = re.sub(r'[^a-zA-Z]', "", lines)
-                if char in lines:
+                if charreg in lines:
                     charResults += 1
                     charIsActive = True
             if charIsActive:
