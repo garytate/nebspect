@@ -24,7 +24,12 @@ logging.getLogArrayOutput(log_folder)
 while active:
     os.system('cls' if os.name == 'nt' else 'clear')
     main_menu.displayMenu(logging.getLogArray(log_folder), characters.loadCharacters(char_folder), log_folder, char_folder)
-    choice = input("> ")
+    try:
+        choice = raw_input("> ")
+    except:
+        choice = input("> ")
+
+    print(choice)
     if choice == '1': characters.loadCharactersOutput(char_folder)
     elif choice == '2': logging.getLogArrayOutput(log_folder)
     elif choice == '3': writing.getActivity(characters.loadCharacters(char_folder), logging.getLogArray(log_folder), log_folder, char_folder, output_folder), #WIP

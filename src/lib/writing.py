@@ -7,7 +7,10 @@ def getActivity(chars, logs, fLogs, fChars, fOutput):
     print("\n" + "*"*30 + "\n")
     _setup = True
     while(_setup):
-        output = str(input("Output to text file? [Y/N]: "))
+        try:
+            output = str(raw_input("Output to text file? [Y/N]: "))
+        except:
+            output = str(input("Output to text file? [Y/N]: "))
         if (output.lower() == "y"):
             _writeoutput = True
             _setup = False
@@ -22,7 +25,21 @@ def getActivity(chars, logs, fLogs, fChars, fOutput):
             print("Creating output directory.")
             os.makedirs(fOutput)
 
-    fName = input("File name: ")
+    try:
+        fName = raw_input("File name: ")
+    except:
+        fName = input("File name: ")
+
+    if fName == "":
+        fName = "output"
+        print("Defaulting file name to: output.txt")
+    else:
+        print("Set file name to: %s.txt" % (fName))
+
+    outputFile = fOutput + "/" + fName + ".txt"
+    f = open(outputFile, "w+")
+    f.close()
+
     for char in chars:
         charResults = 0
         charDaysActive = 0
@@ -39,6 +56,10 @@ def getActivity(chars, logs, fLogs, fChars, fOutput):
                 if charIsActive:
                     charDaysActive += 1
             charIsActive = False
-        print("%s: %s | %s" % (char, charResults, charDaysActive))
+        
+        with open(outputFile, "a") as out:
+            data = (char + ": " + str(charResults) + " | " + str(charDaysActive))
+            out.write(data + "\n")
+            print(data)
     
     return 0
