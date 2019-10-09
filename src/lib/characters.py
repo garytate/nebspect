@@ -1,10 +1,9 @@
 ## Nebspect :: Characters Module
 ## Maintained by Gary (me@garytate.co.uk)
 
-import os
-from pathlib import Path
-
-# @array [strings]
+# loadCharacters - load an array of characters from a text file.
+# @param directory [string]
+# @return array [strings]
 def loadCharacters(directory):
     characters = []
     char_file = directory + "\characters.txt"
