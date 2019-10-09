@@ -6,7 +6,7 @@
 # @return array [strings]
 def loadCharacters(directory):
     characters = []
-    char_file = directory + "\characters.txt"
+    char_file = directory + "/characters.txt"
     with open(char_file, "r") as chars:
         for char in chars:
             char = char.replace("\r", "").replace("\n", "")
