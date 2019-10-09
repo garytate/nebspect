@@ -12,3 +12,11 @@ def getLogArray(dir):
     for filename in os.listdir(dir):
         logArray.append(filename)
     return logArray
+
+def getLogArrayOutput(dir):
+    logArray = []
+    print("\n" + "*"*30 + "\n")
+    for filename in os.listdir(dir):
+        print("Loaded: " + filename)
+        logArray.append(filename)
+    return logArray

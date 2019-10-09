@@ -4,44 +4,33 @@
 
 ## Imports
 import os, sys, time, re
-from lib import directory, characters, logging
+from lib import directory, characters, logging, main_menu, getch, writing
+from pip._vendor.colorama import init, Fore
 
 ## Initiating
+init() # colorama
 print("Nebspect: Version 0.0.1 - Last updated 08/10/2019\n")
+active = True
 
 # Initaliase sub-directories
 main_folder = os.path.dirname(os.path.abspath(__file__))
 log_folder = directory.getChildDirectory(main_folder, "/logs")
 char_folder = directory.getChildDirectory(main_folder, "/characters")
+output_folder = directory.getChildDirectory(main_folder, "/results")
 
-# Loading all characters into memory
-characters = characters.loadCharacters(char_folder)
+logging.getLogArrayOutput(log_folder)
 
-# Loading all log file names into memory
-logArray = logging.getLogArray(log_folder)
-for log in logArray:
-    print("Loaded: " + log)
+# Main loop
+while active:
+    os.system('cls' if os.name == 'nt' else 'clear')
+    main_menu.displayMenu(logging.getLogArray(log_folder), characters.loadCharacters(char_folder), log_folder, char_folder)
+    choice = input("> ")
+    if choice == '1': characters.loadCharactersOutput(char_folder)
+    elif choice == '2': logging.getLogArrayOutput(log_folder)
+    elif choice == '3': writing.getActivity(characters.loadCharacters(char_folder), logging.getLogArray(log_folder), log_folder, char_folder, output_folder), #WIP
+    elif choice == '4': active = not active
+    else: print(Fore.RED + "\nIncorrect option.")
+    print(Fore.RESET + "\nPress any key to continue...")
+    _key = getch.getch()
 
-before = time.time()
-
-for char in characters:
-    charResults = 0
-    charDaysActive = 0
-    charIsActive = False
-    charreg = re.sub(r'[^a-zA-Z]', "", char)
-    for logfile in logArray:
-        logs = logging.getLogByDate(logfile, log_folder)
-        with open(logs, encoding="UTF-8") as l:
-            for lines in l:
-                lines = re.sub(r'[^a-zA-Z]', "", lines)
-                if charreg in lines:
-                    charResults += 1
-                    charIsActive = True
-            if charIsActive:
-                charDaysActive += 1
-        charIsActive = False
-    print(char, str(charResults), str(charDaysActive))        
-
-after = time.time()
-
-print(after-before)
+print("")

@@ -12,3 +12,14 @@ def loadCharacters(directory):
             char = char.replace("\r", "").replace("\n", "")
             characters.append(char)
     return characters
+
+def loadCharactersOutput(directory):
+    print("\n" + "*"*30 + "\n")
+    characters = []
+    char_file = directory + "/characters.txt"
+    with open(char_file, "r") as chars:
+        for char in chars:
+            char = char.replace("\r", "").replace("\n", "")
+            print("Loaded: " + char)
+            characters.append(char)
+    return characters
