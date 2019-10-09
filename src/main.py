@@ -35,7 +35,7 @@ while active:
     elif choice == '3': writing.getActivity(characters.loadCharacters(char_folder), logging.getLogArray(log_folder), log_folder, char_folder, output_folder), #WIP
     elif choice == '4': active = not active
     else: print(Fore.RED + "\nIncorrect option.")
-    print(Fore.RESET + "\nPress any key to continue...")
-    _key = getch.getch()
+    print(Fore.RESET + "\nPress enter to continue...")
+    input()
 
 print("")
