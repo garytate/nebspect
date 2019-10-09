@@ -3,8 +3,9 @@
 
 import os
 
-def getLogByDate(date):
-    return []
+def getLogByDate(date, dir):
+    log_file = dir + ("/" + date)
+    return log_file
 
 def getLogArray(dir):
     logArray = []
