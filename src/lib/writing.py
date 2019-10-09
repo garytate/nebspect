@@ -7,10 +7,8 @@ def getActivity(chars, logs, fLogs, fChars, fOutput):
     print("\n" + "*"*30 + "\n")
     _setup = True
     while(_setup):
-        try:
-            output = str(raw_input("Output to text file? [Y/N]: "))
-        except:
-            output = str(input("Output to text file? [Y/N]: "))
+        output = str(input("Output to text file? [Y/N]: "))
+
         if (output.lower() == "y"):
             _writeoutput = True
             _setup = False
@@ -25,10 +23,7 @@ def getActivity(chars, logs, fLogs, fChars, fOutput):
             print("Creating output directory.")
             os.makedirs(fOutput)
 
-    try:
-        fName = raw_input("File name: ")
-    except:
-        fName = input("File name: ")
+    fName = input("File name: ")
 
     if fName == "":
         fName = "output"

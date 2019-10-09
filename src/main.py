@@ -24,10 +24,8 @@ logging.getLogArrayOutput(log_folder)
 while active:
     os.system('cls' if os.name == 'nt' else 'clear')
     main_menu.displayMenu(logging.getLogArray(log_folder), characters.loadCharacters(char_folder), log_folder, char_folder)
-    try:
-        choice = raw_input("> ")
-    except:
-        choice = input("> ")
+
+    choice = input("> ")
 
     print(choice)
     if choice == '1': characters.loadCharactersOutput(char_folder)
