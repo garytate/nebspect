@@ -3,7 +3,6 @@ from lib import logging, characters
 from pip._vendor.colorama import Fore, Back, Style
 
 def getActivity(chars, logs, fLogs, fChars, fOutput):
-    filename = time.time()
     print("\n" + "*"*30 + "\n")
     _setup = True
     while(_setup):
@@ -39,13 +38,12 @@ def getActivity(chars, logs, fLogs, fChars, fOutput):
         charResults = 0
         charDaysActive = 0
         charIsActive = False
-        charreg = re.sub(r'[^a-zA-Z]', "", char)
         for logfile in logs:
             log = logging.getLogByDate(logfile, fLogs)
             with io.open(log, encoding="utf-8") as l:
                 for lines in l:
-                    lines = re.sub(r'[^a-zA-Z]', "", lines)
-                    if charreg in lines:
+                    if char in lines:
+                        ##print("LINE MATCH: " + char + "IN" + lines)
                         charResults += 1
                         charIsActive = True
                 if charIsActive:
@@ -53,7 +51,7 @@ def getActivity(chars, logs, fLogs, fChars, fOutput):
             charIsActive = False
         
         with open(outputFile, "a") as out:
-            data = (char + ": " + str(charResults) + " | " + str(charDaysActive))
+            data = (char + ", " + str(charResults) + ", " + str(charDaysActive))
             out.write(data + "\n")
             print(data)
     
